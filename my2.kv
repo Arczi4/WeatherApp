@@ -1,0 +1,254 @@
+WindowManager:
+    MainWindow:
+    AppWindow:
+    CreateWindow:
+    
+
+<MainWindow>:
+    name: "Main"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'background.png'
+    username: username 
+    password: password
+
+    FloatLayout:
+        Label:
+            text:"Username: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0, "top":0.8}
+            size_hint: 0.4, 0.1
+
+        TextInput:
+            id: username
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.3 , "top":0.8}
+            size_hint: 0.4, 0.1
+
+        Label:
+            text:"Password: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x": 0, "top": 0.60}
+            size_hint: 0.4, 0.1
+
+        TextInput:
+            id: password
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.3, "top":0.6}
+            size_hint: 0.4, 0.1
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.3}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Log in"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.log_in_Btn()
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.1}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Create account"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createBtn()
+
+<CreateWindow>:
+    name: "Create"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'background.png'
+
+    username: username
+    password: password
+
+    FloatLayout:
+        Label:
+            text:"Username: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0, "top":0.8}
+            size_hint: 0.4, 0.1
+
+        TextInput:
+            id: username
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.3, "top":0.8}
+            size_hint: 0.4, 0.1
+
+        Label:
+            text:"Password: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x": 0, "top": 0.60}
+            size_hint: 0.4, 0.1
+
+        TextInput:
+            id: password
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.3, "top": 0.60}
+            size_hint: 0.4, 0.1
+
+
+
+        Button:
+            pos_hint: {"x": 0.3, "y": 0.1}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Already have an account"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.go_main()
+
+        Button:
+            pos_hint: {"x": 0.3, "y": 0.3}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Create account"
+            on_release:
+                root.create()
+
+
+<AppWindow>:
+    name: "AppWin"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'background.png'
+    city: city
+
+    FloatLayout:
+        Label:
+            text:"City: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0, "top":0.95}
+            size_hint: 0.4, 0.1
+
+        TextInput:
+            id: city
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.3, "top":0.95}
+            size_hint: 0.4, 0.1
+
+        Label:
+            text:"Weahter:"
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0, "top":0.85}
+            size_hint: 0.4, 0.1
+        
+        Label:
+            text:"Air quality: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.6, "top":0.85}
+            size_hint: 0.4, 0.1
+        
+        Label:
+            id: country
+            text: "Country: {}".format(root.country)
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0, "top":0.75}
+            size_hint: 0.4, 0.1
+        
+        Label:
+            id: weather
+            text:"Description: {}".format(root.weather)
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0, "top":0.65}
+            size_hint: 0.4, 0.1
+        
+        Label:
+            id: temp 
+            text:"Temp: {} *C".format(root.temp)
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0, "top":0.55}
+            size_hint: 0.4, 0.1
+        
+        Label:
+            id: wind
+            text:"Wind: {} km/h".format(root.wind)
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0, "top":0.45}
+            size_hint: 0.4, 0.1
+        
+        Label:
+            id: pressure
+            text:"Pressure: {} hPa".format(root.pressure)
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0, "top":0.35}
+            size_hint: 0.4, 0.1
+            
+        Label:
+            id: status
+            text:"status: {}".format(root.status)
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0.55, "top":0.75}
+            size_hint: 0.4, 0.1        
+        
+        Label:
+            id: co
+            text:"CO: {}".format(root.co)
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0.55, "top":0.65}
+            size_hint: 0.4, 0.1
+
+        
+        Label:
+            id: pm10
+            text:"pm10: {}".format(root.pm10)
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0.55, "top":0.55}
+            size_hint: 0.4, 0.1
+
+        
+        Label:
+            id: pm25
+            text:"pm25: {}".format(root.pm25)
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0.55, "top":0.45}
+            size_hint: 0.4, 0.1
+        
+        
+        Label:
+            id: so2
+            text:"SO2: {}".format(root.so2)
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0.55, "top":0.35}
+            size_hint: 0.4, 0.1
+
+        Button:
+            pos_hint: {"x": 0.75, "top":0.95}
+            size_hint: 0.2, 0.1
+            font_size: (root.width**2 + root.height**2) / 16**4
+            text: "Check weather"
+            on_release:
+                root.check_weather()
+                
+        Button:
+            pos_hint:{"x":0.8,"y":0}
+            size_hint: 0.2, 0.1
+            font_size: (root.width**2 + root.height**2) / 16**4
+            text: "Log out"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.go_main()
+
+        Button:
+            id: status
+            pos_hint:{"x":0.4,"y":0.05}
+            size_hint: 0.2, 0.1
+            font_size: (root.width**2 + root.height**2) / 16**4
+            text: "More info"
+            on_release:
+                root.more(root.status)
